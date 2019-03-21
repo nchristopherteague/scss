@@ -1,0 +1,59 @@
+/*------------------------------------*\
+    Font Schemes
+\*------------------------------------*/
+//
+$Font-Family-Scheme-Key: 'body' !default;
+$Font-Family-Schemes: (
+  'header': '\'Poppins\', sans-serif',
+  'body'  : '\'Open-Sans\', sans-serif',
+  'accent': '\'Montserrat\', sans-serif',
+);
+$Font-Size-Base-Value: 16px !default;
+$Font-Size-Scheme-Key: 'primary' !default;
+$Font-Size-Scheme-Value: 'base' !default;
+$Font-Size-Schemes: (
+  'primary': ('jumbo': 72px, 'largest': 48px, 'larger': 30px, 'large': 24px, 'medium': 18px, 'base': 14px, 'small': 11px),
+  'desktop': ('jumbo': 60px, 'largest': 48px, 'larger': 28px, 'large': 24px, 'medium': 16px, 'base': 14px, 'small': 11px),
+  'tablet' : ('jumbo': 60px, 'largest': 40px, 'larger': 28px, 'large': 24px, 'medium': 16px, 'base': 14px, 'small': 11px),
+  'phone'  : ('jumbo': 36px, 'largest': 30px, 'larger': 24px, 'large': 20px, 'medium': 16px, 'base': 14px, 'small': 11px),
+);
+$Font-Weights: (
+  'icon'     : 500,
+  'light'    : 300,
+  'regular'  : 400,
+  'semi-bold': 600,
+  'bold'     : 800,
+);
+$Line-Heights: (
+  'header': 1.1em,
+  'body'  : 1.25em,
+  'small' : 1em,
+); //
+/*------------------------------------*\
+    Examples of use:
+\*------------------------------------*/
+@function Font-Resize($px, $base: $Font-Size-Base-Value) {
+  @return ($px / $base) * 1rem;
+}
+//
+/*------------------------------------*\
+    Examples of use:
+    Font-Family-Scheme('body'); = returns 'Open-Sans',sans-serif
+\*------------------------------------*/
+@function Font-Family-Scheme($name: $Font-Family-Scheme-Key) {
+  $Font-Family: map-get($Font-Family-Schemes, $name);
+  @return unquote($Font-Family);
+}
+//
+/*------------------------------------*\
+    Examples of use:
+    Font-Family-Scheme('primary', 'jumbo'); = returns '72px'
+\*------------------------------------*/
+@function Font-Size-Scheme($name: $Font-Size-Scheme-Key, $variant: $Font-Size-Scheme-Value) {
+  $Font-Size         : null;
+  $Font-Size-Spectrum: map-get($Font-Size-Schemes, $name);
+  @if $Font-Size-Spectrum {
+    $Font-Size: map-get($Font-Size-Spectrum, $variant);
+  }
+  @return $Font-Size;
+}

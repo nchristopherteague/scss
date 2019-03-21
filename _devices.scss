@@ -1,0 +1,87 @@
+@media all and (min-width:981px) and (max-width: 1024px) {
+  body {
+    font-size: Font-Size-Scheme('desktop', 'base') !important;
+  }
+
+  h1 {
+    font-size: Font-Size-Scheme('desktop', 'jumbo') !important;
+  }
+
+  h2 {
+    font-size: Font-Size-Scheme('desktop', 'largest') !important;
+  }
+
+  h3 {
+    font-size: Font-Size-Scheme('desktop', 'large') !important;
+  }
+
+  h4 {
+    font-size: Font-Size-Scheme('desktop', 'medium') !important;
+  }
+
+  h5 {
+    font-size: Font-Size-Scheme('desktop', 'medium') !important;
+  }
+
+  h6 {
+    font-size: Font-Size-Scheme('desktop', 'medium') !important;
+  }
+}
+@media all and (min-width:768px) and (max-width: 980px) {
+  body {
+    font-size: Font-Size-Scheme('tablet', 'base') !important;
+  }
+
+  h1 {
+    font-size: Font-Size-Scheme('tablet', 'jumbo') !important;
+  }
+
+  h2 {
+    font-size: Font-Size-Scheme('tablet', 'largest') !important;
+  }
+
+  h3 {
+    font-size: Font-Size-Scheme('tablet', 'large') !important;
+  }
+
+  h4 {
+    font-size: Font-Size-Scheme('tablet', 'medium') !important;
+  }
+
+  h5 {
+    font-size: Font-Size-Scheme('tablet', 'medium') !important;
+  }
+
+  h6 {
+    font-size: Font-Size-Scheme('tablet', 'medium') !important;
+  }
+}
+@media all and (min-width:0px) and (max-width: 767px) {
+  body {
+    font-size: Font-Size-Scheme('phone', 'base') !important;
+  }
+
+  h1 {
+    font-size: Font-Size-Scheme('phone', 'jumbo') !important;
+  }
+
+  h2 {
+    font-size: Font-Size-Scheme('phone', 'largest') !important;
+  }
+
+  h3 {
+    font-size: Font-Size-Scheme('phone', 'large') !important;
+  }
+
+  h4 {
+    font-size: Font-Size-Scheme('phone', 'medium') !important;
+  }
+
+  h5 {
+    font-size: Font-Size-Scheme('phone', 'medium') !important;
+  }
+
+  h6 {
+    font-size: Font-Size-Scheme('phone', 'medium') !important;
+  }
+}

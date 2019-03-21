@@ -1,0 +1,200 @@
+@import '_colors';
+@import '_fonts';
+@import '_functions';
+@import '_mixins';
+
+*,
+::after,
+::before {
+  @include Add-Box-Sizing;
+}
+
+*,
+body,
+html {
+  font-family             : Font-Family-Scheme('body');
+  font-size               : Font-Size-Scheme();
+  line-height             : map-get($Line-Heights, 'body');
+  font-weight             : map-get($Font-Weights, 'regular');
+  color                   : Color-Schemes('primary');
+  background-color        : Color-Schemes('white');
+  letter-spacing          : 0.5px;
+  -webkit-font-smoothing  : antialiased;
+  -moz-osx-font-smoothing : grayscale;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust    : 100%;
+}
+
+i {
+  margin-right: 5px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color         : Color-Schemes('primary-dark');
+  text-transform: uppercase;
+  font-family   : Font-Family-Scheme('header');
+  font-weight   : map-get($Font-Weights, 'bold');
+  margin        : 5px 0 15px;
+
+  p,
+  span {
+    text-transform: uppercase;
+    font-family   : Font-Family-Scheme('header');
+    font-weight   : map-get($Font-Weights, 'bold');
+  }
+}
+
+h1 {
+  font-size: Font-Size-Scheme('primary', 'jumbo') !important;
+}
+
+h2 {
+  font-size: Font-Size-Scheme('primary', 'largest') !important;
+}
+
+h3 {
+  font-size: Font-Size-Scheme('primary', 'large') !important;
+}
+
+h4 {
+  font-size: Font-Size-Scheme('primary', 'medium') !important;
+}
+
+h5 {
+  font-size  : Font-Size-Scheme('primary', 'medium') !important;
+  font-weight: map-get($Font-Weights, 'regular');
+}
+
+h6 {
+  font-size  : Font-Size-Scheme('primary', 'medium') !important;
+  font-weight: map-get($Font-Weights, 'regular');
+}
+
+p {
+  padding-bottom: 15px;
+
+  &:last-of-type {
+    padding-bottom: 0;
+  }
+
+  &:empty {
+    display: none;
+  }
+}
+
+a {
+  text-decoration: none;
+  @include Add-Transition;
+
+  &:focus,
+  &:hover {
+    color: Color-Schemes('accent');
+  }
+}
+// Lists
+
+ol,
+ul {
+  li {
+    //    margin-top : 10px;
+    //    line-height: map-get($Line-Heights, 'body');
+    color: Color-Schemes('primary');
+  }
+
+  ol,
+  ul {
+    //    margin-top: 0;
+  }
+}
+
+.list-inline ul,
+ul.list-inline {
+  @include Add-List(inline);
+}
+
+.list-block ul,
+ul.list-block {
+  @include Add-List(block);
+}
+
+.list-styled ul,
+ul.list-styled {
+  @include Add-List-Prefix();
+}
+
+.grid {
+  width: 100%;
+}
+
+.grid-row {
+  @include Add-Flex-Display;
+  @include Add-Flex-Flow('row wrap');
+  width  : 100%;
+  padding: 10px 0;
+  @include Add-Content-Alignment('space-between;')
+}
+
+.grid-column {
+  @include Add-Flex-Display;
+  @include Add-Flex-Flow('column wrap');
+  @include Add-Flex('0 0 100px');
+  margin-right: 1%;
+}
+
+.grid-column-grow {
+  @include Add-Flex-Display;
+  @include Add-Flex-Flow('column wrap');
+  @include Add-Flex('1 1 100px');
+}
+
+.column-title {
+  font-weight: map-get($Font-Weights, 'bold');
+}
+
+.column-description {}
+
+.accent-color {
+  color: Color-Schemes('accent') !important;
+}
+
+.no-margin {
+  margin: 0 !important;
+}
+
+.no-padding {
+  padding: 0 !important;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.text-align-right {
+  text-align: right;
+}
+
+input[type=address],
+input[type=email],
+input[type=password],
+input[type=search],
+input[type=tel],
+input[type=text],
+input[type=url],
+select,
+textarea {
+  color           : Color-Schemes('primary-light') !important;
+  background-color: Color-Schemes('primary-lightest') !important;
+  resize          : none;
+}
+//
+// Include any device specific settings
+@import '_devices';

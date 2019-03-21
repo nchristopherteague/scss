@@ -1,0 +1,4 @@
+@function Format-Image-Url($url, $image) {
+  $image-url: #{$url}#{$image};
+  @return $image-url;
+}

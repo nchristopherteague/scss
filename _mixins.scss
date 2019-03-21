@@ -1,0 +1,245 @@
+//
+/*------------------------------------*\
+    RESET / REMOVES
+\*------------------------------------*/
+//
+@mixin Remove-Box-Shadow {
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow   : none !important;
+  box-shadow        : none !important;
+}
+@mixin Remove-UserSelect {
+  -webkit-user-select: none;
+  -moz-user-select   : none;
+  -ms-user-select    : none;
+  user-select        : none;
+}
+@mixin Remove-Transition() {
+  -webkit-transition: none;
+  -moz-transition   : none;
+  -o-transition     : none;
+  -ms-transition    : none;
+  transition        : none;
+}
+@mixin Remove-Animation {
+  -webkit-animation: none;
+  -moz-animation   : none;
+  -ms-animation    : none;
+  -o-animation     : none;
+  animation        : none;
+}
+@mixin Remove-Transform {
+  -webkit-transform: none;
+  -moz-transform   : none;
+  -ms-transform    : none;
+  -o-transform     : none;
+  transform        : none;
+}
+//
+/*------------------------------------*\
+    ADD
+\*------------------------------------*/
+//
+@mixin Add-Transition($property:'all 0.4s ease-in-out') {
+  -webkit-transition: unquote($property);
+  -moz-transition   : unquote($property);
+  -o-transition     : unquote($property);
+  -ms-transition    : unquote($property);
+  transition        : unquote($property);
+}
+@mixin Add-Animation($property) {
+  -ms-animation    : unquote($property);
+  -webkit-animation: unquote($property);
+  -o-animation     : unquote($property);
+  -moz-animation   : unquote($property);
+  animation        : unquote($property);
+}
+@mixin Add-Appearance($property:'none') {
+  -webkit-appearance: unquote($property);
+  -moz-appearance   : unquote($property);
+  appearance        : unquote($property);
+}
+@mixin Add-Transform($property) {
+  -webkit-transform: unquote($property);
+  -moz-transform   : unquote($property);
+  -ms-transform    : unquote($property);
+  -o-transform     : unquote($property);
+  transform        : unquote($property);
+}
+@mixin Add-Flex($property:'0 0 25%') {
+  flex: unquote($property);
+}
+@mixin Add-Flex-Display {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: flex;
+}
+@mixin Add-Flex-Flow($property:'row wrap') {
+  -webkit-flex-flow: unquote($property);
+  -moz-flex-flow   : unquote($property);
+  -ms-flex-flow    : unquote($property);
+  flex-flow        : unquote($property);
+}
+@mixin Add-Flex-Wrap($wrap:'wrap') {
+  -webkit-flex-wrap: unquote($property);
+  -moz-flex-wrap   : unquote($property);
+  -ms-flex-wrap    : unquote($property);
+  flex-wrap        : unquote($property);
+}
+@mixin Add-Flex-Alignment($property:'center') {
+  align-items          : unquote($property);
+  -webkit-align-items  : unquote($property);
+  align-content        : unquote($property);
+  -webkit-align-content: unquote($property);
+}
+@mixin Add-Content-Alignment($property:'center') {
+  -webkit-justify-content: unquote($property);
+  -moz-justify-content   : unquote($property);
+  -ms-justify-content    : unquote($property);
+  justify-content        : unquote($property);
+}
+@mixin Add-Background-Image($image:'stitched-wool', $property-repeat:'repeat', $property-size:'auto', $property-position:'center') {
+  background-image: url($image);
+  @include Common-Background-Properties($property-repeat, $property-size, $property-position);
+}
+@mixin Add-Background-Properties($repeat:'no-repeat', $size:'cover', $position:'center') {
+  background-repeat  : unquote($repeat) !important;
+  background-size    : unquote($size) !important;
+  background-position: unquote($position) !important;
+}
+@mixin Add-Box-Sizing($property:'border-box') {
+  -webkit-box-sizing: unquote($property);
+  -moz-box-sizing   : unquote($property);
+  box-sizing        : unquote($property);
+}
+@mixin Add-Box-Shadow($property:'0 0 0 2px #{Color-Schemes('black', 0.25)}') {
+  -webkit-box-shadow: unquote($property);
+  -moz-box-shadow   : unquote($property);
+  box-shadow        : unquote($property);
+}
+@mixin Add-Text-Shadow($property:'0 0.1em 0.1em #{Color-Schemes('black', 0.4)}') {
+  text-shadow: unquote($property);
+}
+@mixin Add-Border-Radius($property: '2px') {
+  -webkit-border-radius: unquote($property) !important;
+  -moz-border-radius   : unquote($property) !important;
+  border-radius        : unquote($property) !important;
+}
+@mixin Add-Border($color:null, $size:null, $style:null, $positions...) {
+  @if $color == null {
+    $color: #000000;
+  }
+  @if $size == null {
+    $size: 1px;
+  }
+  @if $style == null {
+    $style: solid;
+  }
+  @if length($positions) == 0 {
+    border: $size $style $color;
+  } @else {
+    @each $position in $positions {
+      @if($position == '') {
+        border-width: unquote($size);
+        border-style: unquote($style);
+        border-color: unquote($color);
+      } @else {
+        border-#{$position}-width: unquote($size);
+        border-#{$position}-style: unquote($style);
+        border-#{$position}-color: unquote($color);
+      }
+    }
+  }
+}
+@mixin Add-List($layout:block) {
+  list-style     : none;
+  list-style-type: none;
+  padding        : 0;
+  margin         : 0;
+  @if $layout == block {
+    li {
+      position: relative;
+      float   : none;
+      display : block;
+      padding : 5px 0;
+    }
+    /*
+    li:first-child {
+      padding: 0 0 5px;
+    }
+
+    li:last-child {
+      padding: 5px 0 0;
+    }
+  */
+  }
+  @elseif $layout == inline {
+    li {
+      position: relative;
+      float   : none;
+      display : inline;
+      padding : 0 5px 0 0;
+    }
+
+    li:last-child {
+      padding: 0;
+    }
+  }
+}
+@mixin Add-List-Prefix() {
+  li a {
+    padding-left: 30px;
+    display     : block;
+  }
+
+  li i {
+    position   : absolute;
+    line-height: map-get($Line-Heights, 'body');
+    top        : 0;
+  }
+}
+@mixin Add-List-Divider($layout:horizontal, $color:null) {
+  @if $color != null {
+    color: $color;
+  }
+  @if $layout == horizontal {
+    li:not(:last-child) {
+      @include Add-Border($color, 1px, dotted, 'bottom');
+    }
+  }
+  @elseif $layout == vertical {
+    li:not(:last-child) {
+      @include Add-Border($color, 1px, dotted, 'right');
+    }
+  }
+}
+@mixin Add-Button($property:true) {
+  border-radius   : 0;
+  font-family     : Font-Family-Scheme('body') !important;
+  font-size       : Font-Size-Scheme('primary', 'base') !important;
+  font-weight     : map-get($Font-Weights, 'semi-bold') !important;
+  text-transform  : uppercase;
+  min-width       : 125px;
+  text-align      : center;
+  overflow        : hidden;
+  display         : inline-block;
+  padding         : 0.3em 1em;
+  @include Add-Transition('all .15s ease-in-out');
+  color           : Color-Schemes('accent-light') !important;
+  background-color: Color-Schemes('accent') !important;
+  border          : 1px solid Color-Schemes('accent-light') !important;
+  @include Add-Box-Shadow('0 0 0 2px #{Color-Schemes('accent')}');
+  @if($property == true) {
+    &::after,
+    &:hover::after {
+      display: none;
+      content: '';
+    }
+  }
+
+  &:hover {
+    @include Add-Box-Shadow('0 0 0 2px #{Color-Schemes('accent')}');
+    padding: 0.3em 1em !important;
+  }
+}

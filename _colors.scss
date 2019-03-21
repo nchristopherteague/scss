@@ -1,0 +1,32 @@
+/*------------------------------------*\
+    Color Schemes
+\*------------------------------------*/
+$Color-Schemes-Value: 'White' !default;
+$Color-Schemes-New: (
+  'white'           : #ffffff,
+  'black'           : #000000,
+  'light'           : #f5f5f5,
+  'dark'            : #1A1A1A,
+  'primary'         : #666666,
+  'primary-light'   : #E3E3E3,
+  'primary-lighter' : #aaaaaa,
+  'primary-lightest': #f5f5f5,
+  'primary-dark'    : #393939,
+  'primary-darker'  : #262626,
+  'primary-darkest' : #1A1A1A,
+  'accent'          : #96C346,
+  'accent-light'    : #f5f5f5,
+  'accent-dark'     : #719235,
+); //
+/*------------------------------------*\
+    Examples of use:
+    Color-Schemes('primary'); = returns #666666
+    Color-Schemes('accent', 0.4) = returns rgba(150, 195, 70, 0.4)
+\*------------------------------------*/
+@function Color-Schemes($variant: $Color-Schemes-Value, $opacity: 1) {
+  $color: map-get($Color-Schemes-New, $variant);
+  @if($opacity < 1) {
+    $color: rgba($color, $opacity);
+  }
+  @return $color;
+}
